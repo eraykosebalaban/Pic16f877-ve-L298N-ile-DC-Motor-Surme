@@ -1,0 +1,19 @@
+[PROJECT]
+Target=Pic16f877 ve L298N Ýle DC Motor Sürme.hex
+Processor_Text=PIC16F877
+CCSVersion=5.007
+Compiler=PCM
+[Target Data]
+FileList=Pic16f877 ve L298N Ýle DC Motor Sürme.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[Pic16f877 ve L298N Ýle DC Motor Sürme.c]
+Type=4
+[mru-list]
+1=Pic16f877 ve L298N Ýle DC Motor Sürme.c
+[Opened Files]
+1=Pic16f877 ve L298N Ýle DC Motor Sürme.c
+2=
+[Units]
+Count=1
+1=Pic16f877 ve L298N Ýle DC Motor Sürme (main)

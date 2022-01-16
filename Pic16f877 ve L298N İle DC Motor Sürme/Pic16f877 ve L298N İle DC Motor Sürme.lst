@@ -1,0 +1,132 @@
+CCS PCM C Compiler, Version 5.007, 61971               05-Oca-22 00:12
+
+               Filename:   C:\Users\Eray\Desktop\Pic168f77 Projeleri\Pic16f877 ve L298N Ýle DC Motor Sürme\Pic16f877 ve L298N Ýle DC Motor Sürme.lst
+
+               ROM used:   52 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   5 (1%) at main() level
+                           5 (1%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include<16f877.h> 
+.................... //////// Standard Header file for the PIC16F877 device //////////////// 
+.................... #device PIC16F877 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #use delay(clock = 4000000) 
+....................  
+.................... #use fast_io(a) 
+.................... #use fast_io(b) 
+....................  
+.................... #define ileri pin_a0 
+.................... #define geri pin_a1 
+.................... #define dur pin_a2 
+....................  
+....................  
+.................... void main(){ 
+0004:  BSF    03.5
+0005:  BSF    1F.0
+0006:  BSF    1F.1
+0007:  BSF    1F.2
+0008:  BCF    1F.3
+0009:  BCF    03.7
+000A:  MOVLW  1F
+000B:  ANDWF  03,F
+.................... setup_psp(PSP_DISABLED); 
+000C:  BCF    09.4
+.................... setup_timer_1(T1_DISABLED); 
+000D:  BCF    03.5
+000E:  CLRF   10
+.................... setup_timer_2(T2_DISABLED,0,1); 
+000F:  MOVLW  00
+0010:  MOVWF  78
+0011:  MOVWF  12
+0012:  MOVLW  00
+0013:  BSF    03.5
+0014:  MOVWF  12
+.................... setup_adc_ports(NO_ANALOGS); 
+0015:  BSF    1F.0
+0016:  BSF    1F.1
+0017:  BSF    1F.2
+0018:  BCF    1F.3
+.................... setup_adc(ADC_OFF); 
+0019:  BCF    03.5
+001A:  BCF    1F.0
+.................... setup_ccp1(CCP_OFF); 
+001B:  MOVLW  F0
+001C:  ANDWF  17,F
+.................... setup_ccp2(CCP_OFF); 
+001D:  ANDWF  1D,F
+....................  
+.................... set_tris_a(0x07); 
+001E:  MOVLW  07
+001F:  BSF    03.5
+0020:  MOVWF  05
+.................... set_tris_b(0x00); 
+0021:  MOVLW  00
+0022:  MOVWF  06
+....................  
+.................... output_high(pin_b2); 
+0023:  BCF    03.5
+0024:  BSF    06.2
+.................... output_low(pin_b3); 
+0025:  BCF    06.3
+....................  
+.................... while(true){ 
+....................  
+.................... if(input(ileri)){ 
+0026:  BTFSS  05.0
+0027:  GOTO   02A
+....................  
+.................... output_high(pin_b0); 
+0028:  BSF    06.0
+.................... output_low(pin_b1); 
+0029:  BCF    06.1
+....................  
+.................... } 
+.................... if(input(geri)){ 
+002A:  BTFSS  05.1
+002B:  GOTO   02E
+....................  
+.................... output_low(pin_b0); 
+002C:  BCF    06.0
+.................... output_high(pin_b1); 
+002D:  BSF    06.1
+....................  
+.................... } 
+....................  
+.................... if(input(dur)){ 
+002E:  BTFSS  05.2
+002F:  GOTO   032
+....................  
+.................... output_low(pin_b0); 
+0030:  BCF    06.0
+.................... output_low(pin_b1); 
+0031:  BCF    06.1
+....................  
+....................  
+.................... } 
+0032:  GOTO   026
+....................  
+.................... } 
+....................  
+.................... } 
+....................  
+0033:  SLEEP
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+
+Configuration Fuses:
+   Word  1: 3F73   RC NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

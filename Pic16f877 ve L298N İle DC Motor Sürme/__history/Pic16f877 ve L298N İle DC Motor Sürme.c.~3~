@@ -1,0 +1,63 @@
+#include<16f877.h>
+
+#use delay(clock = 4000000)
+
+#use fast_io(a)
+#use fast_io(b)
+
+#define ileri pin_a0
+#define geri pin_a1
+#define dur pin_a2
+#define input1 pin_b0
+#define input2 pin_b1
+#define enable_a pin_b2
+#define enable_b pin_b3
+
+
+void main(){
+setup_psp(PSP_DISABLED);
+setup_timer_1(T1_DISABLED);
+setup_timer_2(T2_DISABLED,0,1);
+setup_adc_ports(NO_ANALOGS);
+setup_adc(ADC_OFF);
+setup_ccp1(CCP_OFF);
+setup_ccp2(CCP_OFF);
+
+set_tris_a(0x07);
+set_tris_b(0x00);
+
+output_high(enable_a);
+output_low(enable_b);
+
+while(true){
+
+if(input(ileri)){
+
+output_high(input1);
+output_low(input2);
+
+}
+if(input(geri)){
+
+output_low(input1);
+output_high(input2);
+
+}
+
+if(input(dur)){
+
+output_low(input1);
+output_low(input2);
+
+}
+
+}
+
+}
+
+
+
+
+
+
+
